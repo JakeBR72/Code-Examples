@@ -1,0 +1,14 @@
+﻿Author: Jared Forrest Kohler
+Date: 12/06/2016
+Sprint number: Sprint 5
+Name of the .cs file: BowserStateMachine.cs
+Author of the .cs file: Owen Maher
+
+Work could be done on the organization of the fields and properties at the top of the file as they are not sorted
+in any logical way that I can tell. Cyclomatic complexity is kept at a low throughout the whole class as the class
+correctly refers to other classes with certain functionality. While the class uses multiple other classes each class
+that is used is not used beyond what is needed and avoids reading the data of other classes.
+
+If Bowser were to be given a new attack pattern in which he lounges towards mario the style of this class would easily 
+allow it. A new command class would be made to take care of the new attack pattern like the current fire ball command 
+class does.

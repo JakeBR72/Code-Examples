@@ -1,0 +1,17 @@
+﻿Jeremy Clark
+12/06/2016
+sprint 6
+Cheater.cs
+Tyler Snyder
+10 minutes
+
+The Cheater class is pretty well written and 
+runs well without any noticeable effect on 
+performance. The long line of if checks in the
+GetPressedButtons() method is a little troublesome, 
+though there is not much that can be done aside 
+from creating a lookup table for all of these 
+checks and then iterating through it. But that would 
+not really change a whole lot in terms of performance.
+The class is largely cohesive and every part seems
+to only do one particular thing.

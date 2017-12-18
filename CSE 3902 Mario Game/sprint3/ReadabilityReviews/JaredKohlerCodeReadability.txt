@@ -1,0 +1,14 @@
+﻿Author: Jared Forrest Kohler
+Date: 12/06/2016
+Sprint number: Sprint 6
+Name of the .cs file: BowserStateMachine.cs
+Author of the .cs file: Owen Maher
+Time taken: 5 minutes.
+
+Readable: Fields and properties are kept to a minimum with esstential values only kept. The lines of code inside the 
+class are under 100 which is the course goal for classes, additionally each method is under 25 lines of code again being
+the proper size. The class also refers to other classes such as commmand classes and physics in order to limit the amount
+of code within the class and place it in other places.
+
+Unreadable: The only organizational issue with the global variables is that two private fields surrond 
+the group of the properties.

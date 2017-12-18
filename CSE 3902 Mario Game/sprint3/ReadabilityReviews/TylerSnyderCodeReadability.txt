@@ -1,0 +1,15 @@
+﻿Tyler Snyder
+12/6/2016
+sprint 6
+UpdateUtilities.cs
+Jared Kohler
+10 minutes
+
+Readable Code:
+The file is very short, sho it is already pretty readable.
+it is orginized pretty well and given good names, so it is not hard to follow logical steps.
+Methods are split up nicely and spaced well so it is not garbled together into a big wall of text.
+
+there is no real unreadable code in this section, although i could recommend that the different methods could probably
+be made into a more general one that takes, what the type is, and various sorts so it applies to all of them without having the 
+different methods that do relativelty the same thing. would reduce bloat significantly.

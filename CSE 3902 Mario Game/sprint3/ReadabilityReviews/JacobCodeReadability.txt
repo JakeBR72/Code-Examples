@@ -1,0 +1,10 @@
+﻿Jacob Ruth
+12/5/2016
+sprint 
+Elavator.cs
+Jared Kohler
+10 minutes
+
+The code is well formatted and spaced. The main Draw method is very general in its approach
+Nothing out of the ordinary. Variables and functions are appropriately named and easy to understand.
+

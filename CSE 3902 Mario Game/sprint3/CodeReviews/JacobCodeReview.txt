@@ -1,0 +1,9 @@
+﻿Jacob Ruth
+12/5/2016
+sprint 6
+Elavator.cs
+Jared Kohler
+
+The Elevator class is well made. It only has the methods it requires and completes them efficiently. 
+Low coupling due to only relying on the spritebatch to draw and the interface. Very high cohesion as
+the only purpose is to display and move the elevator.

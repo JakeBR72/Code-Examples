@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioGame", "sprint3\MarioGame.csproj", "{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTests", "GameTests\GameTests.csproj", "{810EAEEB-81D2-4521-81B5-655E501FAB43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Debug|Any CPU.Build.0 = Debug|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Debug|x86.ActiveCfg = Debug|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Debug|x86.Build.0 = Debug|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Release|Any CPU.ActiveCfg = Release|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Release|x86.ActiveCfg = Release|x86
+		{39A02DF7-C3AC-4AFB-B7CF-A318BF44BBE8}.Release|x86.Build.0 = Release|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Debug|Any CPU.Build.0 = Debug|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Debug|x86.ActiveCfg = Debug|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Debug|x86.Build.0 = Debug|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Release|Any CPU.ActiveCfg = Release|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Release|Any CPU.Build.0 = Release|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Release|x86.ActiveCfg = Release|x86
+		{810EAEEB-81D2-4521-81B5-655E501FAB43}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://kohler161.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = GameTests\\GameTests.csproj
+		SccProjectName1 = GameTests
+		SccLocalPath1 = GameTests
+		SccProjectUniqueName2 = sprint3\\MarioGame.csproj
+		SccProjectName2 = sprint3
+		SccLocalPath2 = sprint3
+	EndGlobalSection
+EndGlobal

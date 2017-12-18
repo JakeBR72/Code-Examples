@@ -1,0 +1,10 @@
+﻿Owen Maher
+12/6/2016
+Sprint 6
+LevelEditor.cs
+Jacob Ruth
+
+The LevelEditor class has only one major dependency (the game instance), and the overall complexity of the class is much
+cleaner than I would have expected for something as in-depth as a level editor. Cyclomatic complexity is not a concern, as 
+the most "complex" component of the class is just a switch statement nested in an if block. Additionally, the class is highly
+cohesive, all logic present is necessary and serves only the level editor.

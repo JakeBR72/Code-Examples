@@ -1,0 +1,8 @@
+﻿
+	The final sprint's burndown chart was very chaotic. When we first added tasks we had a
+general idea of what we wanted to get done and add, but as time progressed we added some 
+potential features and removed others. After we agreed on the features we wanted the work
+moved along smoothly and quickly. Hence the very apparent decline near the end of the 
+project time frame. Once again the app 'GroupMe' proved to be invaluable with team
+communication and debugging. Overall we accomplished the final goals however due to the
+nature of changing/adding features our burndown chart suffered.

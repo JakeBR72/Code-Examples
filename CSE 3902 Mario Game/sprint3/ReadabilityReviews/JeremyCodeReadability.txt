@@ -1,0 +1,21 @@
+﻿Jeremy Clark
+12/06/2016
+sprint 6
+Cheater.cs
+Tyler Snyder
+10 minutes
+
+Readable code:
+
+The class is pretty readable, there is a fair amount of logic
+but it does not branch very much nor does it branch deeply. 
+All of the logical checks are short and concise and only 
+do one thing. 
+
+Unreadable code:
+
+The most difficult part to read is probably the KonamiCode()
+and KonamiCodeController() methods. They take a few read 
+throughs to really understand what is going on. To help with
+this it may just be useful to rename the variables to something
+a little bit more self evident.

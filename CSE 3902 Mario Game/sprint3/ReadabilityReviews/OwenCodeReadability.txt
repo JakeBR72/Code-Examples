@@ -1,0 +1,12 @@
+﻿Owen Maher
+12/6/2016
+Sprint 6
+LevelEditor.cs
+Jacob Ruth
+5 minutes
+
+LevelEditor.cs serves as a simple level editor, and is very minimal in its design. All components to the class are organized
+well and are cleary separated with comments. The class follows a very consistent pattern overall - there are only two or three
+different kinds of code block patterns, which makes the class very easy to interpret. There really isn't much to nitpick, but
+if I had to I would suggest getting rid of the brackets in the if/else blocks in NextObject() and PreviousObject() since the
+body of the loops are only a single line.

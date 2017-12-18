@@ -1,0 +1,13 @@
+﻿Tyler Snyder
+12/6/2016
+Sprint 6
+UpdateUtilities.cs
+Jeremy Clark
+
+This cs file is pretty basic but very helpful for the game. It allows the game to be better optimised for different types of devices 
+and is simple and easy to follow along with. There is no hard to follow logic or unnecessary ideas in this class and seems rather easy to add to or
+remove from. 
+
+there is also an option to disable this which is a useful feature.
+
+all in all it covers all the basics, and is expandable if it needs to be.
