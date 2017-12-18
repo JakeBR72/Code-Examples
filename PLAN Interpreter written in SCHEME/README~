@@ -1,0 +1,19 @@
+Program can be used with the following command:
+java Core <input file> <output file>
+Example:
+"java Core good1.code output"
+ 
+My interpreter is seperated into three main parts:
+ 
+The Tokenizer which handles the incoming string and splits it into individual tokens. It also converts all tokens into a recognizable form. Ex: "output" -> "OUTPUT", "x" -> "ID[x]"
+ 
+The Parser which handles building the overall structure of the program. Connecting Expressions to Terms to Factors to constants for example. It also handles the depth function for my parse tree implementation, passing the depth of the type upon creation. Each <type> has variables to hold any <children> where the children are depth+1 from the parent. This is how my parse tree is implemented
+ 
+The final part, the interpreter takes the output of the parser and processes constants, ids, and other expressions to get a value from them. It then uses the rules of terms and factors to get a final value for the output expression.
+ 
+Additionally, a visual parse trees can be enabled by changing the boolean to true in the core.java file.
+ 
+Known issues/bugs:
+ 
+Pretty print was also not explored in this project
+ 

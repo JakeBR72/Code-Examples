@@ -1,0 +1,19 @@
+PROGRAM MyTurn IS
+
+INSTRUCTION one IS
+     move
+  END one
+
+  BEGIN
+    WHILE true DO
+      IF next-is-empty THEN
+        one
+      ELSE
+        IF next-is-enemy THEN
+          infect
+        ELSE
+          turnleft
+        END IF
+      END IF
+  END WHILE
+END MyTurn

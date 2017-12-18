@@ -1,0 +1,12 @@
+PROGRAM test1 IS
+INSTRUCTION intruction1 IS
+
+END instruction1
+
+INSTRUCTION intruction1 IS
+
+END instruction1
+
+BEGIN
+
+END test1

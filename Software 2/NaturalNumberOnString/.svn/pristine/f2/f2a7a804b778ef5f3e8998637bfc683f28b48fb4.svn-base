@@ -1,0 +1,157 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+import components.naturalnumber.NaturalNumber;
+import components.naturalnumber.NaturalNumber2;
+
+/**
+ * Customized JUnit test fixture for {@code NaturalNumber3}.
+ */
+public class NaturalNumber3Test extends NaturalNumberTest {
+
+    @Override
+    protected final NaturalNumber constructorTest() {
+        return new NaturalNumber3();
+    }
+
+    @Override
+    protected final NaturalNumber constructorTest(int i) {
+        return new NaturalNumber3(i);
+    }
+
+    @Override
+    protected final NaturalNumber constructorTest(String s) {
+        return new NaturalNumber3(s);
+    }
+
+    @Override
+    protected final NaturalNumber constructorTest(NaturalNumber n) {
+        return new NaturalNumber3(n);
+    }
+
+    @Override
+    protected final NaturalNumber constructorRef() {
+        return new NaturalNumber2();
+    }
+
+    @Override
+    protected final NaturalNumber constructorRef(int i) {
+        return new NaturalNumber2(i);
+    }
+
+    @Override
+    protected final NaturalNumber constructorRef(String s) {
+        return new NaturalNumber2(s);
+    }
+
+    @Override
+    protected final NaturalNumber constructorRef(NaturalNumber n) {
+        return new NaturalNumber2(n);
+    }
+
+    // CONSTRUCTOR TEST CASES
+    /**
+     * Test Case for empty Constructor.
+     */
+    @Test
+    public final void testNoArgumentConstructor() {
+        NaturalNumber n = this.constructorTest();
+        NaturalNumber nExpected = this.constructorRef();
+
+        assertEquals(nExpected, n);
+    }
+
+    /**
+     * Test Case for integer Constructor.
+     */
+    @Test
+    public final void testConstructorInteger() {
+        NaturalNumber n = this.constructorTest(12);
+        NaturalNumber nExpected = this.constructorRef(12);
+
+        assertEquals(nExpected, n);
+    }
+
+    /**
+     * Test Case for String Constructor.
+     */
+    @Test
+    public final void testConstructorString() {
+        NaturalNumber n = this.constructorTest("11");
+        NaturalNumber nExpected = this.constructorRef("11");
+
+        assertEquals(nExpected, n);
+    }
+
+    /**
+     * Test Case for NaturalNumber Constructor.
+     */
+    @Test
+    public final void testConstructorNN() {
+        NaturalNumber n1 = new NaturalNumber2(12);
+        NaturalNumber n = this.constructorTest(n1);
+        NaturalNumber nExpected = this.constructorRef(n1);
+
+        assertEquals(nExpected, n);
+    }
+    //multiplyBy10() TEST CASES
+
+    //divideBy10() TEST CASES
+
+    //isZero() TEST CASES
+    /**
+     * Test Case for isZero when NN is "0".
+     */
+    @Test
+    public final void testIsZero0() {
+        NaturalNumber n = this.constructorTest(0);
+        boolean isZero = n.isZero();
+        boolean isZeroExpected = true;
+        assertEquals(isZeroExpected, isZero);
+    }
+
+    /**
+     * Test Case for isZero when NN is "".
+     */
+    @Test
+    public final void testIsZeroEmpty() {
+        NaturalNumber n = this.constructorTest();
+        boolean isZero = n.isZero();
+        boolean isZeroExpected = true;
+        assertEquals(isZeroExpected, isZero);
+    }
+
+    /**
+     * Test Case for isZero when NN is "1".
+     */
+    @Test
+    public final void testIsZero1() {
+        NaturalNumber n = this.constructorTest(1);
+        boolean isZero = n.isZero();
+        boolean isZeroExpected = false;
+        assertEquals(isZeroExpected, isZero);
+    }
+
+    /**
+     * Test Case for isZero when NN is "5".
+     */
+    @Test
+    public final void testIsZero5() {
+        NaturalNumber n = this.constructorTest(5);
+        boolean isZero = n.isZero();
+        boolean isZeroExpected = false;
+        assertEquals(isZeroExpected, isZero);
+    }
+
+    /**
+     * Test Case for isZero when NN is "100".
+     */
+    @Test
+    public final void testIsZero100() {
+        NaturalNumber n = this.constructorTest(100);
+        boolean isZero = n.isZero();
+        boolean isZeroExpected = false;
+        assertEquals(isZeroExpected, isZero);
+    }
+}

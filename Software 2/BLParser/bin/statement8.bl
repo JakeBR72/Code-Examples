@@ -1,0 +1,3 @@
+WHILE true
+	turnleft
+END WHILE

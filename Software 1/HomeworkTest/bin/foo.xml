@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breakfast_menu>
+  <food calories="650">
+    <name>Belgian Waffles</name>
+    <price>$5.95</price>
+  </food>
+  <food calories="630">
+    <name>Blueberry Pancakes</name>
+    <price>$4.95</price>
+  </food>
+  <food calories="600">
+    <name>French Toast</name>
+    <price>$4.50</price>
+  </food>
+  <food calories="950">
+    <name>Homestyle Breakfast</name>
+    <price>$6.95</price>
+  </food>
+</breakfast_menu>

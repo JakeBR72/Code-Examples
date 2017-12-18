@@ -1,0 +1,5 @@
+IF true then
+    skip
+ELSE
+    else
+END IF

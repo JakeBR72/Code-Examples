@@ -1,0 +1,78 @@
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+
+/**
+ * JUnit test fixture for {@code ExpressionEvaluator}'s {@code valueOfExpr}
+ * static method.
+ *
+ * @author Put your name here
+ *
+ */
+public class ExpressionEvaluatorTest {
+
+    @Test
+    public void testExample() {
+        StringBuilder exp = new StringBuilder(
+                "281/7/2-1-5*(15-(14-1))+((1))+20=30!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(30, value);
+        assertEquals("=30!", exp.toString());
+    }
+
+    @Test
+    public void test1() {
+        StringBuilder exp = new StringBuilder("(5*4)+3=23!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(23, value);
+        assertEquals("=23!", exp.toString());
+    }
+
+    @Test
+    public void test2() {
+        StringBuilder exp = new StringBuilder("(3+4)+3=10!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(10, value);
+        assertEquals("=10!", exp.toString());
+    }
+
+    @Test
+    public void test3() {
+        StringBuilder exp = new StringBuilder("(3+3)*3=18!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(18, value);
+        assertEquals("=18!", exp.toString());
+    }
+
+    @Test
+    public void test4() {
+        StringBuilder exp = new StringBuilder("40/10+4*2=12!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(12, value);
+        assertEquals("=12!", exp.toString());
+    }
+
+    @Test
+    public void test5() {
+        StringBuilder exp = new StringBuilder("(40/10+4)*2=16!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(16, value);
+        assertEquals("=16!", exp.toString());
+    }
+
+    @Test
+    public void test6() {
+        StringBuilder exp = new StringBuilder("(4*10+4)/11=4!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(4, value);
+        assertEquals("=4!", exp.toString());
+    }
+
+    @Test
+    public void test7() {
+        StringBuilder exp = new StringBuilder("(4*10+4)%11=0!");
+        int value = ExpressionEvaluator.valueOfExpr(exp);
+        assertEquals(0, value);
+        assertEquals("=0!", exp.toString());
+    }
+}

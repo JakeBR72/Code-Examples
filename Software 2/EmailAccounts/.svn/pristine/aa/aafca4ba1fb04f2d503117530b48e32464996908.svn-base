@@ -1,0 +1,63 @@
+/**
+ * Implementation of {@code EmailAccount}.
+ *
+ * @author Put your name here
+ *
+ */
+public final class EmailAccount1 implements EmailAccount {
+
+    /*
+     * Private members --------------------------------------------------------
+     */
+
+    // TODO - declare static and instance data members
+    private String firstname;
+    private String lastname;
+    private String companyEmail = "@osu.edu";
+    private String email = null;
+
+    /*
+     * Constructor ------------------------------------------------------------
+     */
+
+    /**
+     * Constructor.
+     *
+     * @param firstName
+     *            the first name
+     * @param lastName
+     *            the last name
+     */
+    public EmailAccount1(String firstName, String lastName) {
+
+        this.firstname = firstName;
+        this.lastname = lastName;
+        // Build Email
+        String casedLastName = this.lastname.toLowerCase();
+        String email = casedLastName + ".1" + this.companyEmail;
+        this.email = email;
+    }
+
+    /*
+     * Methods ----------------------------------------------------------------
+     */
+
+    @Override
+    public String name() {
+        String name = this.firstname + " " + this.lastname;
+        return name;
+    }
+
+    @Override
+    public String emailAddress() {
+        return this.email;
+    }
+
+    @Override
+    public String toString() {
+        String nameSentence = "Name: " + this.firstname + " " + this.lastname
+                + ", Email: " + this.email;
+        return nameSentence;
+    }
+
+}

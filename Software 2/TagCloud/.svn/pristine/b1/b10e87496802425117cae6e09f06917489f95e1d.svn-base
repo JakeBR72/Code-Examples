@@ -1,0 +1,275 @@
+import java.util.Comparator;
+
+import components.map.Map;
+import components.map.Map.Pair;
+import components.map.Map2;
+import components.simplereader.SimpleReader;
+import components.simplereader.SimpleReader1L;
+import components.simplewriter.SimpleWriter;
+import components.simplewriter.SimpleWriter1L;
+import components.sortingmachine.SortingMachine;
+import components.sortingmachine.SortingMachine5;
+
+/**
+ * Put a short phrase describing the program here.
+ *
+ * @author Taha
+ * @author Jacob Ruth
+ * @author Gautham Sivakumar
+ *
+ */
+public final class TagCloud {
+
+    private TagCloud() {
+    }
+
+    private static class StringLT implements Comparator<Pair<String, Integer>> {
+        @Override
+        public int compare(Pair<String, Integer> s1, Pair<String, Integer> s2) {
+            return s1.key().compareTo(s2.key());
+        }
+    }
+
+    private static class IntLT implements Comparator<Pair<String, Integer>> {
+        @Override
+        public int compare(Pair<String, Integer> s1, Pair<String, Integer> s2) {
+            return s1.value().compareTo(s2.value()) * -1;
+        }
+    }
+
+    private static final StringLT STRINGORDER = new StringLT();
+    private static final IntLT INORDER = new IntLT();
+
+    //storing min&max values
+
+    private static final int MAX_SIZE = 48;
+    private static final int MIN_SIZE = 11;
+    private static final String SEPARATORS = " \t\n\r`~!@#$%^&*()-_+=[]{}\\|:;'\",.<>/?";
+
+    public static void main(String[] args) {
+        SimpleReader in = new SimpleReader1L();
+        SimpleWriter out = new SimpleWriter1L();
+
+        ////////////////////////////////////////////////////////
+        out.println("Please input the file name. (.txt)");
+        //String inputFile = in.nextLine();
+        //SimpleReader readFile = new SimpleReader1L(inputFile);
+        SimpleReader readFile = new SimpleReader1L("data/importance.txt");
+
+        out.println("Please enter the output file name. (.html)");
+        //String output = in.nextLine();
+        //SimpleWriter outputFile = new SimpleWriter1L(output);
+        SimpleWriter outputFile = new SimpleWriter1L("data/output.html");
+
+        out.println("Please enter the word count (Int)");
+        //int wordCount = in.nextInteger();
+        int wordCount = 100;
+
+        // Add all words to Queue
+        Map<String, Integer> resultedMap = new Map2<String, Integer>();
+        countWords(readFile, resultedMap);
+        ////////////////////////////////////////////////////////
+        Map<String, Integer> topWords = generateTopWords(resultedMap,
+                wordCount);
+        generateFileHeader(outputFile, "data/importance.txt", wordCount);
+        generateWordList(topWords, outputFile);
+        generateFileFooter(outputFile);
+        outputFile.close();
+        out.println("Output file written.");
+
+        out.close();
+        in.close();
+    }
+
+    /**
+     * Returns the first "word" (maximal length string of characters not in
+     * {@code SEPARATORS}) or "separator string" (maximal length string of
+     * characters in {@code SEPARATORS}) in the given {@code text} starting at
+     * the given {@code position}.
+     *
+     * @param text
+     *            the {@code String} from which to get the word or separator
+     *            string
+     * @param position
+     *            the starting index
+     * @return the first word or separator string found in {@code text} starting
+     *         at index {@code position}
+     * @requires 0 <= position < |text|
+     * @ensures
+     *
+     *          <pre>
+     * nextWordOrSeparator =
+     *   text[position, position + |nextWordOrSeparator|)  and
+     * if entries(text[position, position + 1)) intersection entries(SEPARATORS) = {}
+     * then
+     *   entries(nextWordOrSeparator) intersection entries(SEPARATORS) = {}  and
+     *   (position + |nextWordOrSeparator| = |text|  or
+     *    entries(text[position, position + |nextWordOrSeparator| + 1))
+     *      intersection entries(SEPARATORS) /= {})
+     * else
+     *   entries(nextWordOrSeparator) is subset of entries(SEPARATORS)  and
+     *   (position + |nextWordOrSeparator| = |text|  or
+     *    entries(text[position, position + |nextWordOrSeparator| + 1))
+     *      is not subset of entries(SEPARATORS))
+     *          </pre>
+     */
+    private static String nextWordOrSeparator(String text, int position) {
+        assert text != null : "Violation of: text is not null";
+        assert 0 <= position : "Violation of: 0 <= position";
+        assert position < text.length() : "Violation of: position < |text|";
+
+        String result;
+        int i = position;
+
+        if (!SEPARATORS.contains(String.valueOf(text.charAt(position)))) {
+            while (i < text.length()
+                    && !SEPARATORS.contains(String.valueOf(text.charAt(i)))) {
+                i++;
+            }
+            result = text.substring(position, i);
+        } else {
+            while (i < text.length()
+                    && SEPARATORS.contains(String.valueOf(text.charAt(i)))) {
+                i++;
+            }
+            result = text.substring(position, i);
+        }
+
+        return result;
+    }
+
+    /**
+     * Count the frequency of each word appear in <code>file</code>
+     *
+     * @param file
+     *            the input file
+     * @param wordMap
+     *            map containing all the words and its frequency
+     * @replaces words, wordMap
+     */
+    private static void countWords(SimpleReader file,
+            Map<String, Integer> wordMap) {
+        assert file != null : "Violation of: out is not null";
+        assert file.isOpen() : "Violation of: out.is_open";
+
+        while (!file.atEOS()) {
+            String line = file.nextLine();
+            int position = 0;
+            while (position < line.length()) {
+                String token = nextWordOrSeparator(line, position)
+                        .toLowerCase();
+                if (!SEPARATORS.contains(String.valueOf(token.charAt(0)))) {
+                    if (wordMap.hasKey(token)) {
+                        int count = wordMap.value(token);
+                        wordMap.replaceValue(token, ++count);
+                    } else {
+                        wordMap.add(token, 1);
+                    }
+                }
+                position += token.length();
+            }
+        }
+    }
+
+    private static Map<String, Integer> generateTopWords(
+            Map<String, Integer> words, int n) {
+
+        SortingMachine5<Pair<String, Integer>> heap = new SortingMachine5<>(
+                INORDER);
+        Map<String, Integer> topWords = words.newInstance();
+        while (words.size() > 0) {
+            heap.add(words.removeAny());
+        }
+        heap.changeToExtractionMode();
+        Pair<String, Integer> temporary = null;
+        for (int i = 0; i < n; i++) {
+            temporary = heap.removeFirst();
+            topWords.add(temporary.key(), temporary.value());
+        }
+        return topWords;
+    }
+
+    public static void generateFileHeader(SimpleWriter out, String in, int n) {
+        assert out != null : "Violation of: out is not null";
+        assert out.isOpen() : "Violation of: out.is_open";
+
+        out.println("<html>");
+        out.println("<head>");
+        out.println("<title>Top " + n + "words in " + in + "</title>");
+        out.println(
+                "<link href = \"tagcloud.css\" rel = \"stylesheet\" type = \"text/css\">");
+
+        out.println("</head>");
+
+        out.println("<body>");
+        out.println("<h2>Top " + n + " words in " + in + "</h2>");
+        out.println("<hr>");
+
+        out.println("<div class = \"cdiv\">");
+        out.println("<p class = \"cbox\">");
+    }
+
+    public static void generateWordList(Map<String, Integer> words,
+            SimpleWriter out) {
+        assert out != null : "Violation of: out is not null";
+        assert out.isOpen() : "Violation of: out.is_open";
+
+        int max = maxCount(words);
+        int min = minCount(words);
+
+        SortingMachine<Pair<String, Integer>> heap = new SortingMachine5<>(
+                STRINGORDER);
+
+        while (words.size() > 0) {
+            heap.add(words.removeAny());
+        }
+
+        heap.changeToExtractionMode();
+
+        int css = 0;
+        Pair<String, Integer> entry = null;
+        while (heap.size() > 0) {
+            entry = heap.removeFirst();
+
+            css = (int) ((MAX_SIZE - MIN_SIZE) * (entry.value() - min)
+                    / (double) (max - min)) + MIN_SIZE;
+            out.print("<span style = \"cursor:default\" class = \"");
+            out.print("f" + css);
+            out.print("\" title = \"count:  ");
+            out.print(entry.value());
+            out.print("\">");
+            out.print(entry.key());
+            out.print("</span>");
+            out.println();
+        }
+
+        words.add(entry.key(), entry.value());
+    }
+
+    private static int minCount(Map<String, Integer> words) {
+        int min = Integer.MAX_VALUE;
+        for (Pair<String, Integer> temp : words) {
+            if (temp.value() < min) {
+                min = temp.value();
+            }
+        }
+        return min;
+    }
+
+    private static int maxCount(Map<String, Integer> words) {
+        int max = 0;
+        for (Pair<String, Integer> temp : words) {
+            if (temp.value() > max) {
+                max = temp.value();
+            }
+        }
+        return max;
+    }
+
+    public static void generateFileFooter(SimpleWriter out) {
+        out.println("</p>");
+        out.println("</div>");
+        out.println("</body>");
+        out.println("</html>");
+    }
+}
